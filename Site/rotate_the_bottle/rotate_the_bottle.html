@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="rotate_the_bottle.css">
+<script language="javascript" type="text/javascript" src="/Script/rotate_the_bottle.js" defer></script>
+<link rel="shortcut icon" href="Logs/logo.png">
+<html>
+    <title>DrunkParty.de</title>
+</html>
+<header>
+  <u onclick="window.location.href='/index.html'"; style="color: white; width: 20px;"><h1 id="maintitle" style="color: rgb(223, 70, 70);">Party Games</h1></u>
+  <img src="">
+  <div class="centered">
+    <img id="imgbottle" src="/logs/Pictures/bottle.png" style="width: 626px; height: 626px;">
+    <button id="spin_button" onclick="spinner(1)">Spin</button>
+    <button id="button_settings" onclick="spinner(2)">Auto</button>
+    <div class="settings">
+      <a id="txt1" style="color: white;">Delay Sek <input id="delaytime" type="number" max="999" placeholder="10" min="10"></a>
+      <a id="txt2" style="color: white;">Runden <input id="delayrounds" type="number" placeholder="2" max="999" min="2"></a>
+
+      <div class="custom-alert" id="customAlert" onclick="hideAlert()">
+      </div>
+
+    </div>
+  </div>
+  <head>
+    <body>
+     <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6HS6ZC0PYQ');
+      </script>
+    </body>
+  </head>
+    
+
+</header>

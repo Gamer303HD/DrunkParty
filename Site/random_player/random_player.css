@@ -1,0 +1,234 @@
+/*Background Main*/
+body{
+  margin: 0%;
+  background: #333333;
+}
+/*Title*/
+#maintitle{
+  animation: slideInFromTop1 1s forwards;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100px;
+  font: bold;
+}
+#title1{
+  color: rgb(171, 212, 250);
+}
+/*Center the font div container*/
+.centered{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 80px;
+  padding: 140px;
+  
+  
+  
+}
+/*Spin Input Button*/
+#spin_button{
+  text-align: center;
+  align-items: center;
+  height: 300px;
+  width: 320px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 75px;
+  font-style: bold;
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+  border-width: 10px;
+  border-radius: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+/*Players*/
+#player{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 100px;
+  height: 100px;
+  font-size: 70px;
+  font-style: bold;
+  font-weight: bold;
+  text-align: center;
+  background-color: transparent;
+  border-color: rgb(255, 255, 255);
+  border-width: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/*Randdom Number*/
+#numbers{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 150px;
+  margin: 5%;
+  color: white;
+  animation: slideInFromTop1 1s forwards;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+@keyframes animation1 {
+  0% {
+      transform:rotate(2deg)
+    }
+    25% {
+      transform:rotate(-2deg)
+    }
+    50%{
+      transform:rotate(2deg)
+    }
+    75% {
+      transform:rotate(-2deg)
+    }
+    100% {
+      transform:rotate(2deg) 
+    }
+}
+#playerstitle{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+color: white;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/**/
+#spin_button{
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+align-items: center;
+text-align: center;
+margin: auto;
+left: auto;
+top: 20px;
+margin-top: 200px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+animation: slideInFromTop1 1s forwards;
+
+}
+/**/
+#imgbottle{
+animation: animation1 15s linear infinite;
+}
+/**/
+/**/
+/**/
+/*Title*/
+#maintitle{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100px;
+  font: bold;
+  animation: animation1 10s linear infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+#title1{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+  color: rgb(171, 212, 250);
+}
+/*Center the font div container*/
+.centered{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 80px;
+  padding: 140px;
+  
+  
+  
+}
+/*Spin Input Button*/
+#spin_button{
+  text-align: center;
+  align-items: center;
+  height: 300px;
+  width: 320px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 75px;
+  font-style: bold;
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+  border-width: 10px;
+  border-radius: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+/*Players*/
+#player{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 100px;
+  height: 100px;
+  font-size: 110px;
+  font-style: bold;
+  font-weight: bold;
+  text-align: center;
+  background-color: transparent;
+  border-color: rgb(255, 255, 255);
+  border-width: 10px;
+  animation: animation1 10s linear infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/*Randdom Number*/
+#numbers{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 150px;
+  margin: 5%;
+  color: white;
+  animation: slideInFromTop1 1s forwards;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+@keyframes animation1 {
+  0% {
+      transform:rotate(2deg)
+    }
+    25% {
+      transform:rotate(-2deg)
+    }
+    50%{
+      transform:rotate(2deg)
+    }
+    75% {
+      transform:rotate(-2deg)
+    }
+    100% {
+      transform:rotate(2deg) 
+    }
+}
+#playerstitle{
+  animation: slideInFromTop1 1s forwards;
+
+color: white;
+}
+/*button spin*/
+#spin_button{
+align-items: center;
+text-align: center;
+margin: auto;
+left: auto;
+top: 20px;
+margin-top: 200px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateX(-100px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop1 {
+  from {
+      opacity: 0;
+      color: #eb3434;
+      transform: translateY(-100px);
+  }
+  to {
+      opacity: 1;
+      color: #a4b8ee;
+      transform: translateY(0);
+  }
+}
+/**/
+/**/
+/**/

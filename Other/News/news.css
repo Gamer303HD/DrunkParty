@@ -1,0 +1,39 @@
+/*Background Main*/
+body{
+    background: #333333;
+}
+
+/*Main container*/
+.container{
+    text-align: center;
+    align-items: center;
+    font-family: Black Arial, Arial;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 150%;
+    animation: button 10s linear infinite;
+}
+#im{
+    text-transform: inherit;
+    text-decoration: underline;
+}
+
+
+@keyframes button {
+    0% {
+        transform:rotate(3deg)
+      }
+      25% {
+        transform:rotate(-3deg)
+      }
+      50%{
+        transform:rotate(3deg)
+      }
+      75% {
+        transform:rotate(-3deg)
+      }
+      100% {
+        transform:rotate(3deg) 
+      }
+}

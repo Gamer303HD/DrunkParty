@@ -1,0 +1,468 @@
+
+
+
+/*Background Main*/
+body{
+   background-color: #333333;
+}
+
+
+
+.switch-container {
+  text-align: center;
+  margin-left: 45%;
+  margin-right: 50%;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 56px;
+  
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 50px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ff9000;
+}
+
+input:checked + .slider:before {
+  transform: translateX(50px);
+}
+/*Title*/
+#maintitle{
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 180px;
+    font-weight: bold;
+    font: bold;
+    background-image: url(https://media2.giphy.com/media/HkEDr0jVekaZO/giphy.gif?cid=790b76115151ed408a9cae4539eb6351baba5d85998ab783&ct=g&rid=giphy.gif);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: transparent;
+    animation: button 10s linear infinite;
+}
+#slidermaintitel{
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-align: center;
+  align-items: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 100px;
+  padding-bottom: 60px;
+  font-weight: bold;
+  font: bold;
+  background-image: url(https://media2.giphy.com/media/HkEDr0jVekaZO/giphy.gif?cid=790b76115151ed408a9cae4539eb6351baba5d85998ab783&ct=g&rid=giphy.gif);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: transparent;
+  animation: button 10s linear infinite;
+}
+
+
+/*Button 1 Random Number*/
+#buttonlist{
+    height: 25%;
+    width: 65%;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 75px;
+    font-style: bold;
+    background-color: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 10px solid;
+    animation: slideInFromTop 1s forwards; 
+}
+/**/
+.buttonlisten{
+    transform-origin: 50% 50%;
+    animation: slideInFromTop 1s forwards; 
+    
+}
+/*5deg anmimation*/
+@keyframes button {
+    0% {
+        transform:rotate(3deg)
+      }
+      25% {
+        transform:rotate(-3deg)
+      }
+      50%{
+        transform:rotate(3deg)
+      }
+      75% {
+        transform:rotate(-3deg)
+      }
+      100% {
+        transform:rotate(3deg) 
+      }
+}
+
+/*nummernfenster*/
+#nummernfenster {
+  font-family: Arial Black, Arial;
+  background: rgb(255,255,255);
+  font-style: bold;
+  font: bold;
+  font-size: 54px;
+  background-color: #ddb989;
+  text-align: center;
+  margin: auto;
+  width: 800px;
+  height: 800px;
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: slideIn 1s forwards; 
+
+
+}
+
+/*eingabe*/
+#eingabe {
+  font-family: Arial Black, Arial;
+  display: block;
+  width: 710px;
+  text-align: center;
+  height: 300px;
+  font-size: 90px;
+  border-radius: 50px;
+  animation: slideIn 1s forwards; 
+}
+/*okay button*/
+#ok-button {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  display: block;
+  text-align: center;
+  font-size: 90px;
+  margin-top: 100px;
+  background-color: #ddb989;
+  color: #fff;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 300px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 4;
+}
+
+
+
+/*partygame1*/
+#partygame1{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background: rgb(255,255,255);
+  font-style: bold;
+  font: bold;
+  font-size: 53px;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 25%, #a0d4dd 26%);
+  text-align: center;
+  margin: auto;
+  width: 800px;
+  height: 300px;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: button 10s linear infinite;
+}
+/*emoji scale*/
+#emoji1{
+  padding: 10px;
+
+}
+/*Rotating Bottle*/
+#partygame2{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background: rgb(255,255,255);
+  font-style: bold;
+  font: bold;
+  font-size: 53px;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgb(255, 120, 248) 26%);
+  text-align: center;
+  margin: auto;
+  width: 800px;
+  height: 300px;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: button 10s linear infinite;
+}
+/*tictaktoe*/
+#partygame3{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background: rgb(255,255,255);
+  font-style: bold;
+  font: bold;
+  font-size: 54px;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 25%, #ce7a7a 26%);
+  text-align: center;
+  margin: auto;
+  width: 800px;
+  height: 300px;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: button 10s linear infinite;
+}
+
+/*kategorien*/
+#partygame4{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background: rgb(255,255,255);
+  font-style: bold;
+  font: bold;
+  font-size: 54px;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgb(247, 66, 66) 26%);
+  text-align: center;
+  margin: auto;
+  width: 800px;
+  height: 300px;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: button 10s linear infinite;
+}
+/*impressum endbar*/
+.endbar{
+  padding: 300px;
+  color: rgba(255, 255, 255, 0.836);
+}
+/*impressum tag name*/
+#impressum{
+  font-family: Arial Black, Arial;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+}
+/*Neuigkeiten überschrift*/
+#news{
+  font-family: Arial Black, Arial;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+}
+
+/**/
+/**/
+#emoji1{
+  font-size: 150px;
+
+}
+
+
+#ageConfirmation {
+  background-color: rgba(153, 153, 153, 0.685);
+  font-size: 20px;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+.popup-content {
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  font-weight: bold;
+  font-size: 25px;
+  background-color: rgba(255, 255, 255, 0.651);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+.popup-content button {
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  font-size: 25px;
+  margin: 20px;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.accept-button {
+  font-weight: bold;
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  background-color: #4CAF50;
+  color: white;
+}
+.decline-button {
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  background-color: #f44336;
+  color: white;
+}
+#textalk{
+  font-size: 30px;
+}
+#online-count{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: lightgreen;
+}
+
+.sidenav {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color: rgb(255, 255, 255);
+  background-color: #202020;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  text-align:center;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+
+}
+.icon {
+  font-size: 100px;
+  cursor: pointer;
+  transition: transform 0.5s ease; /* Animiert die Drehung */
+}
+
+.icon.rotate {
+  transform: rotate(360deg); /* 360-Grad-Drehung */
+}
+.sidenav a:hover{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 80px;
+  margin-left: 50px;
+  color: red;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+
+
+/*Pc Auflösung*/
+@media only screen and (min-width: 1080px) {
+  #emoji1{
+    font-size: 95px;
+  }
+
+  #ageConfirmation {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.651);
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+}
+.popup-content {
+    font-weight: bold;
+    font-family: "Edu AU VIC WA NT Hand", cursive;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+.popup-content button {
+    margin: 10px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.accept-button {
+    background-color: #4CAF50;
+    color: white;
+}
+.decline-button {
+    background-color: #f44336;
+    color: white;
+}
+}
+
+
+
+
+
+
+/* Schlüsselbild für die allgemeine Animation */
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateX(-100px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+@keyframes slideInFromTop {
+  from {
+      opacity: 0;
+      color: #ff0000;
+      transform: translateY(-100px);
+  }
+  to {
+      opacity: 1;
+      color: #a4a0dd;
+      transform: translateY(0);
+  }
+}
