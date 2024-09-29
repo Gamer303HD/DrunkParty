@@ -1,0 +1,75 @@
+
+/*Background Main*/
+body{
+  margin: 0%;
+  background: rgb(102, 78, 86);
+}
+#text{
+  color: white;
+  text-align: center; /* Zentriert den Text horizontal */
+  word-wrap: break-word; /* Erlaubt Zeilenumbrüche innerhalb von Wörtern */
+  overflow-wrap: break-word; /* Ermöglicht das Umbrechen von langen Wörtern */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 35px;
+  display: flex;
+  justify-content: center; /* Zentriert den Inhalt horizontal */
+  align-items: center; /* Zentriert den Inhalt vertikal */
+  height: 50vh; /* Höhe des Containers auf die volle Viewport-Höhe setzen */
+  animation: slideIn 1s forwards;
+}
+#numbers{
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 35px;
+  display: flex;
+  justify-content: center; /* Zentriert den Inhalt horizontal */
+  align-items: center; /* Zentriert den Inhalt vertikal */
+  height: 50%; /* Höhe des Containers auf die volle Viewport-Höhe setzen */
+  margin-top: 100px;
+  animation: slideIn 1s forwards;
+  
+}
+/*Title*/
+#maintitle1{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 45px;
+  font: bold;
+  color: white;
+  animation: slideInFromTop1 1s forwards;
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateX(-100px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    color: #ff0000;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    color: #ffffff;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInFromTop1 {
+  from {
+    opacity: 0;
+    color: #eb3434;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    color: #8674d8;
+    transform: translateY(0);
+  }
+}
