@@ -1,110 +1,120 @@
 <!DOCTYPE html>
-
-<meta charset="UTF-8">
-<link rel="stylesheet" href="stylesheet.css">
-<script language="javascript" type="text/javascript" src="main.js" defer></script>
-<script language="javascript" type="text/javascript" src="Script/colorchangetheme.js" defer></script>
-
-<link rel="shortcut icon" href="logs/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
-
-<body onload="showAgeConfirmation()">
-     <!-- Google tag (gtag.js) -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
-     <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
-     gtag('config', 'G-6HS6ZC0PYQ');
-     </script>
-  <div id="ageConfirmation">
-      <div class="popup-content">
-          <h2>Altersbestätigung</h2>
-          <p id="textalk">Sie müssen mindestens 18 Jahre alt sein, um diese Seite zu besuchen.</p>
-          <button class="accept-button" onclick="acceptAge()">Ich bin 18 Jahre oder älter</button>
-          <button class="decline-button" onclick="declineAge()">Ich bin jünger als 18 Jahre</button>
-      </div>
-  </div>
-
-<html>
-    <title id="title1">DrunkParty.de</title>
-</html>
-<header>
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a id="slidermaintitel">Settings</a>
-    <a href="#" style="font-size: 60px; color: wheat;">Mode</a>
-    <div class="switch-container">
-      <label class="switch">
-        <input type="checkbox" id="changechecktheme">
-        <span class="slider"></span>
-      </label>
-    </div>
-    <a id="modeset"></a>
-  </div>
-  
-  
-  <div class="buttonlisten" style="align-items: center; text-align: center;">
-    <h1 id="maintitle" onclick="resetsaves()">Drunk Party</h1>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>DrunkParty.de</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="shortcut icon" href="logs/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
     
-    <div id="nummernfenster">
-      <input type="number" id="eingabe" placeholder="Player 2 bis 99">
-      <button id="ok-button" onclick="schließeFenster(1)">Okay</button>
-    </div>
-
-    <div style="display: flex; justify-content: center; align-items: center; height: 80px;">
-      <span class="icon" id="icon" style="font-size: 100px; cursor: pointer;" onclick="openNav()">❄️</span>
-   </div>   
-   <div id="input-container"></div>
-    
-    <div id="partygame4" onclick="window.location.href='/Site/boom_game/boom_game.html'"> 
-      <h1 id="emoji1">💣</h1>
-      <a style="color: white;">Boom</a>
-    </div>
-    
-    <div id="partygame3" onclick="window.location.href='/selectgui/select_wwop_gui/wwop_gui.html'"> 
-      <h1 id="emoji1">🥵</h1>
-      <a>Wahrheit</a>
-    </div>
-    
-    <div id="partygame1" onclick="window.location.href='Site/random_player/random_palyer.html'"> 
-      <h1 id="emoji1">👨‍👩‍👧‍👦</h1>
-      <a>Random Player</a>
-    </div>
-    
-    <div id="partygame2" onclick="window.location.href='/Site/rotate_the_bottle/rotate_the_bottle.html'"> 
-      <h1 id="emoji1">🍹</h1>
-      <a>Rotate Bottle</a>
-    </div>
-    <div class="endbar">
-      <div id="online-count"></div>
-
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
     <script>
-        // Funktion zum Aktualisieren der Online-Anzahl
-        function updateOnlineCount(count) {
-            document.getElementById('online-count').innerText = count;
-        }
-
-        // SSE-Verbindung zum Server aufbauen
-        const eventSource = new EventSource('/events');
-
-        // Ereignis empfangen und die Anzahl aktualisieren
-        eventSource.onmessage = function(event) {
-            const onlineCount = event.data;
-            updateOnlineCount(onlineCount);
-        };
-
-        // Fehlerbehandlung
-        eventSource.onerror = function() {
-            console.error('Fehler bei der SSE-Verbindung');
-        };
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6HS6ZC0PYQ');
     </script>
-
-      <h1 id="news" onclick="window.location.href='/Other/News/news.html'">News</h1>
-      <h2 id="impressum" onclick="window.location.href='/Other/Impressum/impressum.html' ">Impressum</h2>
-      <h3 id="impressum" onclick="window.location.href='/Other/alcohol_and_responsibility/alcohol_and_responsibility.html' ">Alcohol and responsibility</h3>
+</head>
+<body>
+    <div class="ios-background"></div>
+    <!-- Animated Background Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
-  </div>
-</header>
+
+    <!-- Age Confirmation Modal -->
+    <div id="ageModal" class="age-modal">
+        <div class="modal-content">
+            <h2>Altersbestätigung</h2>
+            <p>Sie müssen mindestens 18 Jahre alt sein, um diese Seite zu besuchen.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn accept-btn" onclick="acceptAge()">Ich bin 18+ Jahre</button>
+                <button class="modal-btn decline-btn" onclick="declineAge()">Unter 18 Jahre</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Icon -->
+    <div class="settings-icon" onclick="toggleSidebar()">
+        <span style="font-size: 1.5rem;">⚙️</span>
+    </div>
+
+    <!-- Settings Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+        <div class="sidebar-content">
+            <h2 class="sidebar-title">Settings</h2>
+            <div class="theme-toggle">
+                <span style="font-size: 2rem; margin-right: 10px;">🌙</span>
+                <div class="toggle-switch" id="themeToggle" onclick="toggleTheme()">
+                    <div class="toggle-slider"></div>
+                </div>
+                <span style="font-size: 2rem; margin-left: 10px;">☀️</span>
+            </div>
+            <p style="margin-top: 20px; color: var(--text-secondary);">Dark/Light Mode Toggle</p>
+        </div>
+    </div>
+
+    <header>
+        <h1 class="main-title" onclick="resetGame()">DRUNK PARTY</h1>
+    </header>
+
+    <main>
+        <!-- Player Input Section -->
+        <div id="playerInput" class="player-input">
+            <input type="number" id="playerCount" placeholder="Anzahl Spieler (2-99)" min="2" max="99">
+            <button class="start-btn" onclick="handlePlayerInput()">Players eingeben</button>
+            <div id="nameInputs" class="name-inputs hidden"></div>
+        </div>
+
+        <!-- Games Container -->
+        <div id="gamesContainer" class="games-container hidden">
+            <div class="game-card" onclick="window.location.href='Site/random_player/random_palyer.html'">
+                <span class="game-emoji">🎲</span>
+                <h3 class="game-title">Random Player</h3>
+                <p class="game-description">Zufälliger Spieler wird ausgewählt für die nächste Runde</p>
+            </div>
+
+            <div class="game-card" onclick="window.location.href='/Site/rotate_the_bottle/rotate_the_bottle.html'">
+                <span class="game-emoji">🍹</span>
+                <h3 class="game-title">Rotate Bottle</h3>
+                <p class="game-description">Klassisches Flaschendrehen für Party-Spaß</p>
+            </div>
+
+            <div class="game-card" onclick="window.location.href='/selectgui/select_wwop_gui/wwop_gui.html'">
+                <span class="game-emoji">🥵</span>
+                <h3 class="game-title">Wahrheit oder Pflicht</h3>
+                <p class="game-description">Spannende Fragen und verrückte Aufgaben</p>
+            </div>
+
+            <div class="game-card" onclick="window.location.href='/Site/boom_game/boom_game.html'">
+                <span class="game-emoji">💣</span>
+                <h3 class="game-title">Boom Game</h3>
+                <p class="game-description">Explosive Party-Action mit Zeitdruck</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="Other/News/news.html" class="footer-link">News</a>
+            <a href="Other/Impressum/impressum.html" class="footer-link">Impressum</a>
+            <a href="Other/alcohol_and_responsibility/alcohol_and_responsibility.html" class="footer-link">Verantwortungsvoller Umgang</a>
+        </div>
+        <div class="online-count" id="onlineCount">🟢 Online: 10 Spieler</div>
+    </footer>
+</body>
+</html>
