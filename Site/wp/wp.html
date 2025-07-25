@@ -4,33 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wahrheit oder Pflicht</title>
-    <script src="/Script/wp.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="wp.css">
 </head>
 <body>
-    <div onclick="window.location.href='/selectgui/select_wwop_gui/wwop_gui.html'" style="padding-top: 40px;" id="maintitle1"><u>Wahrheit oder Pflicht</u></div>
-
-    <div id="numbers">
-        <button onclick="buttonwahrheit()" style="background-color: rgb(0, 238, 255); text-align: center;" class="btn">Wahrheit</button>
-        <button onclick="buttonpflicht()" style="background-color: rgb(255, 0, 64);" class="btn">Pflicht</button>
-        
+    <!-- Animated Background Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
-    <div id="text"></div>
 
+  
 
+    <!-- Main Content -->
+    <header>
+        <h1 class="main-title" onclick="window.location.href='/selectgui/select_wwop_gui/wwop_gui.html'">Wahrheit oder Pflicht</h1>
+    </header>
 
+    <main>
+        <!-- Game Buttons -->
+        <div class="game-controls">
+            <button onclick="buttonwahrheit()" class="game-btn truth-btn">
+                <span class="btn-emoji">🤔</span>
+                <span class="btn-text">Wahrheit</span>
+                <div class="btn-glow"></div>
+            </button>
+            <button onclick="buttonpflicht()" class="game-btn dare-btn">
+                <span class="btn-emoji">⚡</span>
+                <span class="btn-text">Pflicht</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+
+        <!-- Question/Task Display -->
+        <div class="question-container">
+            <div id="text" class="question-text"></div>
+            <div class="question-bg-effects">
+                <div class="floating-icon">💭</div>
+                <div class="floating-icon">✨</div>
+                <div class="floating-icon">🎭</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Wahrheit oder Pflicht - Hab Spaß und spiel fair! 🎉</p>
+        </div>
+    </footer>
+
+    <script src="/Script/wp.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6HS6ZC0PYQ');
+    </script>
 </body>
-<head>
-    <body>
-     <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
-      <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6HS6ZC0PYQ');
-      </script>
-    </body>
-  </head>
-    
 </html>

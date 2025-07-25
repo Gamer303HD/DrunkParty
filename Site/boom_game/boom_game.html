@@ -1,25 +1,66 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bomben-Spiel</title>
     <link rel="stylesheet" href="boom_game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="\Script\boom_game.js"></script>
 </head>
 <body>
-    <div class="container">
-        
-        <header>
-                 <div onclick="window.location.href='/index.html'" id="maintitle1"><u>Boom</u></div>
-             </header>     
-        <div class="bomb" id="bomb"></div>
-        <div id="timer" class="hidden"></div>
-        <div style="padding-bottom: 60px;"></div>
-        <div id="category" class="hidden"></div>
-        <button id="startButton1" onClick="window.location.reload();" style="display: none;">Restart</button>
-        <button id="startButton" >Start</button>
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
-    <script src="/Script/boom_game.js"></script>
+
+    <div class="container">
+        <header>
+            <a href="/index.html" class="back-link">
+                <h1 id="maintitle1">💣 Boom</h1>
+            </a>
+        </header>
+        
+        <div class="game-area">
+            <div class="bomb-container">
+                <div class="bomb" id="bomb">
+                    <div class="bomb-emoji">💣</div>
+                    <div class="fuse"></div>
+                </div>
+            </div>
+            
+            <div style="visibility: hidden;"  id="timer" class="timer hidden">
+
+            </div>
+            
+            <div id="category" class="category hidden">
+                <div class="category-card">
+                    <div class="category-icon">🎯</div>
+                    <div class="category-text"></div>
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <button id="startButton" class="game-btn start-btn">
+                    <span class="btn-icon">🚀</span>
+                    Start
+                </button>
+                <button id="startButton1" class="game-btn restart-btn" onClick="window.location.reload();">
+                    <span class="btn-icon">🔄</span>
+                    Restart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
 </body>
 </html>

@@ -1,110 +1,489 @@
-/* Background Main */
+/* CSS Variables */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --truth-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    --dare-gradient: linear-gradient(135deg, #ff0040 0%, #ff4081 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --shadow-glow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    --shadow-hover: 0 15px 35px rgba(31, 38, 135, 0.5);
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  background: rgb(102, 78, 86);
-  font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 100%);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    transition: background 0.5s ease;
 }
 
-/* Title Container */
-#text {
-  color: white;
-  text-align: center; /* Zentriert den Text horizontal */
-  word-wrap: break-word; /* Erlaubt Zeilenumbrüche innerhalb von Wörtern */
-  overflow-wrap: break-word; /* Ermöglicht das Umbrechen von langen Wörtern */
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 35px;
-  display: flex;
-  justify-content: center; /* Zentriert den Inhalt horizontal */
-  align-items: center; /* Zentriert den Inhalt vertikal */
-  height: 50vh; /* Höhe des Containers auf die volle Viewport-Höhe setzen */
-  animation: slideIn 1s forwards;
-  padding-top: -40px;
+/* Animated Background Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
 }
 
-/* Buttons Container */
-#numbers {
-  color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 35px;
-  display: flex;
-  justify-content: center; /* Zentriert den Inhalt horizontal */
-  align-items: center; /* Zentriert den Inhalt vertikal */
-  height: 50%; /* Höhe des Containers auf die volle Viewport-Höhe setzen */
-  margin-top: 100px;
-  gap: 20px;
-  animation: slideIn 1s forwards;
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
 }
 
-/* Title Style */
-#maintitle1 {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 45px;
-  font-weight: bold;
-  color: white;
-  animation: slideInFromTop1 1s forwards;
+.particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
+.particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; }
+.particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 0.5s; }
+.particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 1.5s; }
+.particle:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-delay: 3s; }
+.particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 2.5s; }
+.particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 4s; }
+.particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 0.8s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); }
 }
 
-/* Button Style */
-.btn {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  width: 150px;
-  height: 150px;
-  font-size: 30px;
-  border: none;
-  border-radius: 8px;
-  background-color: #4CAF50;
-  color: white;
-  cursor: pointer;
-  outline: none;
-  transition: background-color 0.3s;
+/* Settings Icon */
+.settings-icon {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 200;
+    box-shadow: var(--shadow-glow);
+    font-size: 1.5rem;
 }
 
-.btn:hover {
-  background-color: #45a049;
+.settings-icon:hover {
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: var(--shadow-hover);
 }
 
-/* Refresh Button */
-.refresh-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+/* Settings Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 500;
+    transition: left 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.refresh-btn img {
-  width: 30px;
-  height: 30px;
+.sidebar.open {
+    left: 0;
 }
 
-.refresh-btn:hover {
-  opacity: 0.8;
+.sidebar-content {
+    text-align: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 60px 40px;
+    box-shadow: var(--shadow-glow);
+    position: relative;
 }
 
-/* Animations */
-@keyframes slideIn {
-  from {
-      opacity: 0;
-      transform: translateX(-100px);
-  }
-  to {
-      opacity: 1;
-      transform: translateX(0);
-  }
+.sidebar-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-@keyframes slideInFromTop1 {
-  from {
-      opacity: 0;
-      color: #eb3434;
-      transform: translateY(-100px);
-  }
-  to {
-      opacity: 1;
-      color: #a4b8ee;
-      transform: translateY(0);
-  }
+/* Header */
+header {
+    position: relative;
+    z-index: 100;
+    padding-top: 60px;
+}
+
+.main-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    text-align: center;
+    margin: 40px 0;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite, titlePulse 2s ease-in-out infinite alternate;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+
+.main-title:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes titlePulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
+}
+
+/* Game Controls - MODIFIED FOR SIDE BY SIDE LAYOUT */
+.game-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 20px;
+    /* Removed flex-wrap: wrap to prevent stacking */
+}
+
+.game-btn {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-glow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-family: 'Poppins', sans-serif;
+    /* Ensure buttons don't shrink too much */
+    flex-shrink: 0;
+    min-width: 140px;
+    min-height: 140px;
+}
+
+.truth-btn {
+    background: var(--truth-gradient);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.dare-btn {
+    background: var(--dare-gradient);
+    border: 1px solid rgba(255, 0, 64, 0.3);
+}
+
+.btn-emoji {
+    font-size: 3rem;
+    animation: bounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.btn-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.game-btn:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.game-btn:hover .btn-glow {
+    left: 100%;
+}
+
+.game-btn:active {
+    transform: translateY(-5px) scale(1.02);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Question Container */
+.question-container {
+    position: relative;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-text {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.6;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
+}
+
+.question-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.question-bg-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.3;
+    animation: floatAround 8s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-icon:nth-child(2) {
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.floating-icon:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes floatAround {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(20px, -20px) rotate(90deg); }
+    50% { transform: translate(-10px, -30px) rotate(180deg); }
+    75% { transform: translate(-20px, 10px) rotate(270deg); }
+}
+
+/* Slide-in Animation for Questions */
+.animate-slide-in {
+    animation: slideInFromTop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Footer */
+.footer {
+    margin-top: 100px;
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-content p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* Background Color Transitions */
+.bg-purple { background: linear-gradient(135deg, #7f12dd 0%, #9b59b6 100%); }
+.bg-pink { background: linear-gradient(135deg, #dd124d 0%, #e74c3c 100%); }
+.bg-yellow { background: linear-gradient(135deg, #ddc012 0%, #f1c40f 100%); }
+.bg-green { background: linear-gradient(135deg, #12dd5d 0%, #27ae60 100%); }
+.bg-blue { background: linear-gradient(135deg, #1272dd 0%, #3498db 100%); }
+
+/* Hidden class for JavaScript */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design - MODIFIED TO KEEP BUTTONS SIDE BY SIDE */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3rem;
+        margin: 20px 0;
+    }
+    
+    .game-controls {
+        gap: 20px; /* Reduced gap for smaller screens */
+        padding: 40px 10px; /* Less side padding */
+    }
+    
+    .game-btn {
+        width: 160px; /* Smaller buttons for mobile */
+        height: 160px;
+    }
+    
+    .btn-emoji {
+        font-size: 2.5rem;
+    }
+    
+    .btn-text {
+        font-size: 1.3rem;
+    }
+    
+    .question-text {
+        padding: 30px 20px;
+        font-size: 1.3rem;
+    }
+    
+    .settings-icon {
+        top: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .close-btn {
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+    }
+    
+    .sidebar-content {
+        padding: 40px 20px;
+        margin: 20px;
+    }
+    
+    .sidebar-title {
+        font-size: 2rem;
+    }
+    
+    .floating-icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-controls {
+        gap: 15px; /* Even smaller gap for very small screens */
+        padding: 30px 5px;
+    }
+    
+    .game-btn {
+        width: 140px; /* Even smaller buttons */
+        height: 140px;
+    }
+    
+    .btn-emoji {
+        font-size: 2rem;
+    }
+    
+    .btn-text {
+        font-size: 1.1rem;
+    }
+    
+    .question-container {
+        margin: 40px auto;
+        padding: 0 15px;
+    }
+    
+    .question-text {
+        padding: 25px 15px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra small screens - maintain side by side layout */
+@media (max-width: 360px) {
+    .game-controls {
+        gap: 10px;
+        padding: 20px 5px;
+    }
+    
+    .game-btn {
+        width: 120px;
+        height: 120px;
+        min-width: 120px;
+        min-height: 120px;
+    }
+    
+    .btn-emoji {
+        font-size: 1.8rem;
+    }
+    
+    .btn-text {
+        font-size: 1rem;
+    }
 }

@@ -1,34 +1,70 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="random_player.css">
-<script language="javascript" type="text/javascript" src="/Script/random_player.js" defer></script>
-<link rel="shortcut icon" href="Logs/logo.png">
-<html>
-    <title>DrunkParty.de</title>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrunkParty.de - Random Player</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="random_player.css">
+    <link rel="shortcut icon" href="Logs/logo.png">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="/index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <h1 class="main-title" onclick="window.location.href='/index.html'">Party Games</h1>
+    </header>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <div class="player-display">
+            <h2 class="player-title">Aktueller Spieler:</h2>
+            <div class="current-player" id="currentPlayer">Bereit zum Spielen</div>
+            <div class="spinning-number" id="spinningNumber" style="display: none;">0</div>
+        </div>
+        
+        <button class="spin-button" id="spinButton" onclick="gamer1()">
+            <i class="fas fa-dice"></i> Spieler wählen
+        </button>
+    </div>
+
+    <!-- Challenge Modal -->
+    <div class="challenge-modal" id="challengeModal">
+        <div class="modal-content">
+            <h2>🎲 Deine Aufgabe!</h2>
+            <p class="challenge-text" id="challengeText"></p>
+            <button class="modal-close-btn" onclick="closeModal()">Verstanden!</button>
+        </div>
+    </div>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6HS6ZC0PYQ');
+    </script>
+
+    <!-- Main Script -->
+    <script src="/Script/random_player.js"></script>
+</body>
 </html>
-<header>
-  
-  <u onclick="window.location.href='/index.html'"; style="color: white; width: 20px;"><h1 id="maintitle" style="color: rgb(223, 70, 70);">Party Games</h1></u>
-  <img src="">
-
-
-  <div class="centered">
-    <h2 id="playerstitle">Player: <a id="player" style="color: white;"></a></h2>
-    <h3 id="numbers">0</h3>
-    <button id="spin_button" onclick="gamer1()">Spin</button>
-  </div>
-
-  <head>
-    <body>
-     <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
-      <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6HS6ZC0PYQ');
-      </script>
-    </body>
-  </head>
-    
-</header>

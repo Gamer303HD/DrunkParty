@@ -1,213 +1,623 @@
-/*Background Main*/
-body{
-    margin: 0%;
-    background-color: #333333;
-}
-/*Headr*/
-header{
+/* Rotate the Bottle CSS - Updated with modern glassmorphism design */
 
+/* CSS Variables */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --danger-gradient: linear-gradient(135deg, #ff4757 0%, #c44569 100%);
+    --success-gradient: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --auto-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --shadow-glow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    --shadow-hover: 0 15px 35px rgba(31, 38, 135, 0.5);
+    --spin-gradient: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
 }
-/*Title*/
-#maintitle{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 100px;
-    font: bold;
-    animation: animation1 10s linear infinite;
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-#title1{
-    color: rgb(171, 212, 250);
+
+html {
+    height: 100%;
+    height: -webkit-fill-available;
+    background-color: #0c0c0c !important;
 }
-/*Center the font div container*/
-.centered{
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-size: 80px;
-    padding: 140px; 
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
 }
-/*Spin Input Button*/
-#spin_button{
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    text-align: center;
+
+/* Background with fixed gradient */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 100%);
+    z-index: -3;
+    pointer-events: none;
+}
+
+/* Animated background overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.2) 0%, transparent 50%);
+    z-index: -2;
+    animation: backgroundShift 20s ease infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* Animated Background Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
+.particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; }
+.particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 0.5s; }
+.particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 1.5s; }
+.particle:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-delay: 3s; }
+.particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 2.5s; }
+.particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 4s; }
+.particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 0.8s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Header */
+header {
+    position: relative;
+    z-index: 100;
+    padding: 20px;
+}
+
+/* Back Link */
+.back-link-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+}
+
+.back-btn {
+    display: flex;
     align-items: center;
-    height: 300px;
-    width: 320px;
-    font-size: 90px;
-    font-style: bold;
-    background-color: transparent;
-    border-color: #ffffff;
-    color: #ff0000;
-    border-width: 10px;
-    border-radius: 40px;
-
+    gap: 10px;
+    padding: 12px 20px;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-glow);
 }
-/*button_settings Input Button*/
-#button_settings{
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  align-items: center;
-  height: 300px;
-  width: 320px;
-  font-size: 90px;
-  font-style: bold;
-  background-color: transparent;
-  border-color: #ffffff;
-  color: #ffbb00;
-  border-width: 10px;
-  border-radius: 40px;
-  animation: slideIn1 1s forwards;
 
-
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-gradient);
 }
-/*Players*/
-#player{
-    font-family: Arial, Helvetica, sans-serif;
-    width: 100px;
-    height: 100px;
-    font-size: 70px;
-    font-style: bold;
-    font-weight: bold;
+
+.back-icon {
+    font-size: 1.2rem;
+}
+
+/* Title */
+.main-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
     text-align: center;
-    background-color: transparent;
-    border-color: rgb(255, 255, 255);
-    border-width: 10px;
-    animation: animation1 10s linear infinite;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 80px 0 60px 0;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 8s ease infinite, titlePulse 2s ease-in-out infinite alternate;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
-/*Randdom Number*/
-#numbers{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 200px;
-    margin: 5%;
+
+.main-title:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 25px rgba(255, 255, 255, 0.4));
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes titlePulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
+}
+
+/* Game Container */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Bottle Container */
+.bottle-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.bottle-image {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+    animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.bottle-image:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 12px 35px rgba(255, 255, 255, 0.2));
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.02); }
+}
+
+/* Controls Container */
+.controls-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Game Buttons */
+.game-btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 160px;
+    justify-content: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.game-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.game-btn:hover::before {
+    left: 100%;
+}
+
+.game-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.game-btn:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* Primary Button (Spin) */
+.primary-btn {
+    background: var(--spin-gradient);
+    border-color: #ff6b6b;
     color: white;
-    animation: animation1 10s linear infinite;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-@keyframes animation1 {
-    0% {
-        transform:rotate(2deg)
-      }
-      25% {
-        transform:rotate(-2deg)
-      }
-      50%{
-        transform:rotate(2deg)
-      }
-      75% {
-        transform:rotate(-2deg)
-      }
-      100% {
-        transform:rotate(2deg) 
-      }
-}
-#playerstitle{
-  color: white;
-}
-/**/
-#spin_button{
-  align-items: center;
-  text-align: center;
-  margin: auto;
-  left: auto;
-  top: 20px;
-  margin-top: 200px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  animation: slideIn 1s forwards;
 
+.primary-btn:hover {
+    border-color: #ff6b6b;
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
 }
-/**/
-#imgbottle{
-  animation: animation1 15s linear infinite;
-}
-/**/
-.settings{
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  font-size: 80px;
-  padding: 140px;
-  animation: slideInFromTop1 1s forwards;
 
+/* Auto Button */
+.auto-btn {
+    background: var(--auto-gradient);
+    border-color: #fcb69f;
+    color: #2c2c54;
+    font-weight: 700;
 }
-/*zeit in sekunden textfeld*/
-#delaytime{
-  width: 280px;
-  height: 200px;
-  font-size: 150px;
-  background: #4e4e4e;;
-  color: #a0d4dd;
-  text-align: center;
-  align-items: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  animation: slideInFromTop1 1s forwards;
 
+.auto-btn:hover {
+    border-color: #fcb69f;
+    box-shadow: 0 15px 35px rgba(252, 182, 159, 0.4);
 }
-/*rounds textfeld*/
-#delayrounds{
-  width: 280px;
-  height: 200px;
-  font-size: 150px;
-  background: #4e4e4e;;
-  color: rgba(255, 255, 255, 0.705);
-  text-align: center;
-  align-items: center;
-  animation: slideInFromTop1 1s forwards;
 
+.btn-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
-/* CSS-Styling für die Alert-Box */
+
+/* Settings Panel */
+.settings-panel {
+    width: 100%;
+    max-width: 500px;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: var(--shadow-glow);
+    animation: slideUp 0.8s ease-out;
+}
+
+.settings-content {
+    text-align: center;
+}
+
+.settings-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.label-icon {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.settings-input {
+    width: 100%;
+    max-width: 200px;
+    height: 60px;
+    font-size: 1.4rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    border-radius: 15px;
+    color: var(--text-primary);
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-glow);
+    transition: all 0.3s ease;
+}
+
+.settings-input:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 25px rgba(79, 172, 254, 0.4);
+    transform: scale(1.02);
+}
+
+.settings-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Custom Alert Modal */
 .custom-alert {
-  font-family: Arial Black, Helvetica, sans-serif;
-  background-color: rgb(28, 169, 173);
-  font-size: large;
-  font-weight: bolder;
-  color: #fff;
-  justify-content: center;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  padding-top: 60%;
-  left: 5%;
-  right: 5%;
-  width: 90%;
-  height: 100%; /* Vollbild */
-  display: flex;
-  flex-direction: column;
-  display: none;
-  text-align: center;
-  align-items: center;
-  font-size: 60px;
-}
-@keyframes slideIn {
-  from {
-      opacity: 0;
-      transform: translateX(-100px);
-  }
-  to {
-      opacity: 1;
-      transform: translateX(0);
-  }
-}
-@keyframes slideIn1 {
-  from {
-      opacity: 0;
-      transform: translateX(-100px);
-  }
-  to {
-      opacity: 1;
-      transform: translateX(0px);
-  }
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: modalFade 0.5s ease-out;
 }
 
-@keyframes slideInFromTop1 {
-  from {
-      opacity: 0;
-      color: #eb3434;
-      transform: translateY(-100px);
-  }
-  to {
-      opacity: 1;
-      color: #a4b8ee;
-      transform: translateY(0);
-  }
+.alert-content {
+    background: linear-gradient(135deg, rgba(255, 71, 87, 0.9) 0%, rgba(196, 69, 105, 0.9) 100%);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 71, 87, 0.4);
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    margin: 20px;
+    box-shadow: 0 20px 60px rgba(255, 71, 87, 0.3);
+    animation: alertSlide 0.8s ease-out;
 }
-/**/
-/**/
+
+.alert-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.alert-message {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+}
+
+.alert-close {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Animations */
+@keyframes modalFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes alertSlide {
+    from { transform: scale(0.5) translateY(-50px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        transform: translateY(50px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+/* Hidden Elements */
+.hidden {
+    display: none !important;
+}
+
+/* Visibility classes for JavaScript */
+[style*="visibility: Hidden"],
+[style*="visibility: hidden"] {
+    visibility: hidden !important;
+}
+
+[style*="visibility: Visible"],
+[style*="visibility: visible"] {
+    visibility: visible !important;
+}
+
+/* CSS-Feature-Detection für backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+    .game-btn,
+    .settings-panel,
+    .back-btn,
+    .settings-input,
+    .custom-alert,
+    .alert-content {
+        background: rgba(26, 26, 46, 0.95) !important;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .primary-btn {
+        background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%) !important;
+    }
+    
+    .auto-btn {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%) !important;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body::before {
+        background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 100%) !important;
+    }
+    
+    .main-title {
+        font-size: 3rem;
+        margin: 40px 0 30px 0;
+    }
+    
+    .bottle-image {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .bottle-container {
+        min-height: 300px;
+    }
+    
+    .controls-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .game-btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 18px 30px;
+        font-size: 1.2rem;
+    }
+    
+    .settings-panel {
+        margin: 0 15px;
+        padding: 25px 20px;
+    }
+    
+    .settings-title {
+        font-size: 1.5rem;
+    }
+    
+    .settings-input {
+        max-width: 150px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .alert-content {
+        margin: 15px;
+        padding: 30px 20px;
+    }
+    
+    .alert-message {
+        font-size: 1.1rem;
+    }
+    
+    .back-link-container {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .back-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Partikel-Animation für mobile optimieren */
+    .particles {
+        opacity: 0.5;
+    }
+    
+    .particle:nth-child(n+6) {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.5rem;
+        margin: 30px 0 20px 0;
+    }
+    
+    .bottle-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .bottle-container {
+        min-height: 250px;
+    }
+    
+    .game-btn {
+        max-width: 240px;
+        padding: 15px 25px;
+        font-size: 1.1rem;
+    }
+    
+    .btn-icon {
+        font-size: 1.3rem;
+    }
+    
+    .settings-input {
+        max-width: 120px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .input-label {
+        font-size: 1rem;
+    }
+    
+    .label-icon {
+        font-size: 1.2rem;
+    }
+}

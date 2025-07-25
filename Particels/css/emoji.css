@@ -1,0 +1,23 @@
+.blink::before {
+    content: "🥳";
+    display: inline-block;
+    animation: blinker 1s linear infinite alternate;
+  }
+  
+  @keyframes blinker {
+    0% {
+      content: "🥳";
+      transform: scaleX(1);
+    }
+    50% {
+      transform: scaleX(0);
+    }
+    100% {
+      content: "😜";
+      transform: scaleX(1);
+    }
+  }
+
+
+
+

@@ -1,156 +1,136 @@
-//Game Nummer 2
+// Game Nummer 2
 var a = 0;
-var rounds = document.getElementById("delayrounds").value;
-let delaytimer1 = document.getElementById("delaytime").value;
 
 const customAlert = document.getElementById('customAlert');
-    const closeButton = document.getElementById('closeButton');
+const closeButton = document.getElementById('closeButton');
 
-    function showAlert(message) {
-      customAlert.innerHTML = message;
-      customAlert.style.display = 'block';
-    }
+function showAlert(message) {
+  const alertMessage = customAlert.querySelector('.alert-message');
+  alertMessage.textContent = message;
+  customAlert.style.display = 'flex';
+  document.getElementById("imgbottle").style.visibility = "hidden";
+}
 
-    function hideAlert() {
-      customAlert.style.display = 'none';
-      document.getElementById("imgbottle").style.visibility = "Visible";
-    }
+function hideAlert() {
+  customAlert.style.display = 'none';
+  document.getElementById("imgbottle").style.visibility = "visible";
+}
 
-function spinner(number){
-   document.getElementById("maintitle").style.visibility = "Hidden";
-   let imgbottle = document.getElementById("imgbottle");
-   let spinner_button = document.getElementById("spin_button");
-   let txt1 = document.getElementById("txt1");
-   let txt2 = document.getElementById("txt2");
-   spinner_button.style.visibility = "Hidden";
-   button_settings.style.visibility = "Hidden";
-   delaytime.style.visibility = "Hidden";
-   txt1.style.visibility = "Hidden";
-   txt2.style.visibility = "Hidden";
-   let delaytimer1 = document.getElementById("delaytime").value;
-   var rounds = document.getElementById("delayrounds").value;
+function spinner(number) {
+  const delaytimeInput = document.getElementById("delaytime");
+  const delayroundsInput = document.getElementById("delayrounds");
+  const maintitle = document.getElementById("maintitle");
+  const spinner_button = document.getElementById("spin_button");
+  const button_settings = document.getElementById("button_settings");
+  const txt1 = document.getElementById("txt1");
+  const txt2 = document.getElementById("txt2");
 
-   if(number == 1){
-      spinner_random();
-   }else if(number == 2 && delaytimer1 > 9 && rounds > 1){
-      spinner_random1();
-   }else{
-      spinner_button.style.visibility = "Visible";
-      button_settings.style.visibility = "Visible";
-      delaytime.style.visibility = "Visible";
-      txt1.style.visibility = "Visible";
-      txt2.style.visibility = "Visible";
-      document.getElementById("maintitle").style.visibility = "Visible";
-      showAlert("Bitte gib eine gültige zahl ein. Der Delay darf nur minimal 10 sein und die runden anzahl höher als 2")
-      document.getElementById("imgbottle").style.visibility = "Hidden";
-      
-   }
+  maintitle.style.visibility = "hidden";
+  spinner_button.style.visibility = "hidden";
+  button_settings.style.visibility = "hidden";
+  delaytimeInput.style.visibility = "Visible";
+  delayroundsInput.style.visibility = "Visible";
+
+
+  let delay = parseInt(delaytimeInput.value);
+  let rounds = parseInt(delayroundsInput.value);
+
+  if (number === 1) {
+    spinner_random();
+  } else if (number === 2 && delay >= 10 && rounds >= 2) {
+    // Disable input fields during auto mode
+    delaytimeInput.disabled = true;
+    delayroundsInput.disabled = true;
+    spinner_random1();
+  } else {
+    showAlert("Bitte gib eine gültige Zahl ein. Der Delay muss mindestens 10 Sekunden betragen und die Rundenanzahl mindestens 2.");
+    // Re-enable everything
+    spinner_button.style.visibility = "visible";
+    button_settings.style.visibility = "visible";
+    delaytimeInput.style.visibility = "visible";
+    delayroundsInput.style.visibility = "visible";
+    maintitle.style.visibility = "visible";
+
+  }
 }
 
 async function spinner_random() {
-   var min = 1000; 
-   var max = 2400;
-   x = 0;
-   var y = 0;
-   var b = 0;
-   var radius = Math.round(Math.random() * (max - min)) + min;
-   let spinner_button = document.getElementById("spin_button");
-   let imgbottle = document.getElementById("imgbottle");
-   spinner_button.style.visibility = "Hidden";
+  const imgbottle = document.getElementById("imgbottle");
+  const spinner_button = document.getElementById("spin_button");
+  let x = 0;
+  let y = 0;
+  const min = 1000;
+  const max = 2400;
+  const radius = Math.round(Math.random() * (max - min)) + min;
 
-   while(x < radius){
-      let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("done!"), 20);
-         imgbottle.style.rotate = x + "deg";
-         x = x + 15;
-         if(y == 10){
-            document.body.style.backgroundColor = "#bc12dd";
-         }else if(y == 20){
-            document.body.style.backgroundColor = "#dd124d";
-         }else if(y == 30){
-            document.body.style.backgroundColor = "#12ddc3";
-         }else if(y == 40){
-            document.body.style.backgroundColor = "#35dd12";
-         }else if(y == 50){
-            document.body.style.backgroundColor = "#dddb12";
-         }else if(y == 60){
-            document.body.style.backgroundColor = "#dd7f12";
-            y = 0;
-         }
-         y = y + 1;
-      });
-      let result = await promise;
-   }
-   spinner_button.style.visibility = "Visible";
-   button_settings.style.visibility = "Visible";
-   delaytime.style.visibility = "Visible";
-   txt1.style.visibility = "Visible";
-   txt2.style.visibility = "Visible";
-   document.body.style.backgroundColor = "#333333";
-   spinner_button.style.visibility = "Visible";
-   document.getElementById("maintitle").style.visibility = "Visible";
- }
+  while (x < radius) {
+    await new Promise(resolve => setTimeout(resolve, 20));
+    imgbottle.style.rotate = x + "deg";
+    x += 15;
+    animateColorCycle(y);
+    y = (y + 1) % 61;
+  }
 
- async function spinner_random1() {
-   var min = 1000; 
-   var max = 2400;
-   x = 0;
-   a = 0;
-   var y = 0;
-   var radius = Math.round(Math.random() * (max - min)) + min;
-   let spinner_button = document.getElementById("spin_button");
-   let imgbottle = document.getElementById("imgbottle");
-   var rounds = document.getElementById("delayrounds").value;
-   console.log(rounds);
-
-while(a < rounds){
-   a = a + 1;
-   console.log("a: " + a)
-   x = 0;
-   var radius = Math.round(Math.random() * (max - min)) + min;
-   let delaytimer1 = document.getElementById("delaytime").value;
-   newdelay = delaytimer1 * 1000;
-
-      let promise1 = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("done!"), newdelay);
-
-      });
-      let result = await promise1;
-
-   while(x < radius){
-      let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("done!"), 20);
-         imgbottle.style.rotate = x + "deg";
-         x = x + 15;
-         if(y == 10){
-            document.body.style.backgroundColor = "#bc12dd";
-         }else if(y == 20){
-            document.body.style.backgroundColor = "#dd124d";
-         }else if(y == 30){
-            document.body.style.backgroundColor = "#12ddc3";
-         }else if(y == 40){
-            document.body.style.backgroundColor = "#35dd12";
-         }else if(y == 50){
-            document.body.style.backgroundColor = "#dddb12";
-         }else if(y == 60){
-            document.body.style.backgroundColor = "rgb(215, 213, 232)";
-            y = 0;
-
-         }
-         y = y + 1;
-      });
-      let result = await promise;
-   }
-}
-   spinner_button.style.visibility = "Visible";
-   button_settings.style.visibility = "Visible";
-   delaytime.style.visibility = "Visible";
-   txt1.style.visibility = "Visible";
-   txt2.style.visibility = "Visible";
-   spinner_button.style.visibility = "Visible";
-   document.getElementById("maintitle").style.visibility = "Visible";
-   document.body.style.backgroundColor = "rgb(215, 213, 232)";
+  restoreUI();
 }
 
+async function spinner_random1() {
+  const imgbottle = document.getElementById("imgbottle");
+  const spinner_button = document.getElementById("spin_button");
+  const delaytimeInput = document.getElementById("delaytime");
+  const delayroundsInput = document.getElementById("delayrounds");
+  let x = 0;
+  let y = 0;
+  a = 0;
+  const min = 1000;
+  const max = 2400;
+  const rounds = parseInt(delayroundsInput.value);
+  const delay = parseInt(delaytimeInput.value) * 1000;
 
+  while (a < rounds) {
+    a++;
+    x = 0;
+    const radius = Math.round(Math.random() * (max - min)) + min;
 
+    if (a > 1) {
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+
+    while (x < radius) {
+      await new Promise(resolve => setTimeout(resolve, 20));
+      imgbottle.style.rotate = x + "deg";
+      x += 15;
+      animateColorCycle(y);
+      y = (y + 1) % 61;
+    }
+  }
+
+  restoreUI();
+
+  // Re-enable input fields
+  delaytimeInput.disabled = false;
+  delayroundsInput.disabled = false;
+}
+
+function animateColorCycle(y) {
+  const colors = [
+    "#bc12dd", "#dd124d", "#12ddc3",
+    "#35dd12", "#dddb12", "#dd7f12"
+  ];
+  const index = Math.floor(y / 10);
+  if (colors[index]) {
+    document.body.style.backgroundColor = colors[index];
+  }
+}
+
+function restoreUI() {
+  document.getElementById("spin_button").style.visibility = "visible";
+  document.getElementById("button_settings").style.visibility = "visible";
+  document.getElementById("delaytime").style.visibility = "visible";
+  document.getElementById("delayrounds").style.visibility = "visible";
+  const txt1 = document.getElementById("txt1");
+  const txt2 = document.getElementById("txt2");
+
+  document.getElementById("maintitle").style.visibility = "visible";
+  document.body.style.backgroundColor = "#333333";
+}

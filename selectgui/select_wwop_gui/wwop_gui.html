@@ -5,34 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Button Liste</title>
     <link rel="stylesheet" href="wwop_gui.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <u onclick="window.location.href='/index.html'" style="color: white;">
-            <h1 id="maintitle" style="color: rgb(255, 255, 255);">Back</h1>
-        </u>
-    </header>
-    <div class="button-container">
-        <button class="emoji-button button1" class="slide-in-button button1" onclick="window.location.href='/Site/truth/truth.html'">😬 Wahrheit</button>
-        <button class="emoji-button button2" class="slide-in-button button2" onclick="window.location.href='/Site/who_would_rather/who_would_rather.html'">🎭 Wer Würde Eher</button>
-        <button class="emoji-button button3" class="slide-in-button button3" onclick="window.location.href='/Site/categories/categories.html'">🍩 kategorien</button>
-        <button class="emoji-button button4" class="slide-in-button button4" onclick="window.location.href='/Site/wp/wp.html'">🏖️ Wahrheit oder Pflicht</button>
-        <button style="visibility: hidden;" class="emoji-button button5" class="slide-in-button button5">🎵 Soon</button>
-        <button style="visibility: hidden;" class="emoji-button button6" class="slide-in-button button6">🏖️ Soon</button>
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
-</body>
-<head>
-    <body>
-     <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
-      <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6HS6ZC0PYQ');
-      </script>
-    </body>
-</head>
-    
-</html>
 
+    <header>
+        <a href="/index.html" class="back-link">
+            <h1 class="main-title">Back</h1>
+        </a>
+    </header>
+    
+    <div class="button-container">
+        <button class="game-card" onclick="window.location.href='/Site/truth/truth.html'">
+            <span class="game-emoji">😬</span>
+            Wahrheit
+        </button>
+        
+        <button class="game-card" onclick="window.location.href='/Site/who_would_rather/who_would_rather.html'">
+            <span class="game-emoji">🎭</span>
+            Wer Würde Eher
+        </button>
+        
+        <button class="game-card" onclick="window.location.href='/Site/categories/categories.html'">
+            <span class="game-emoji">🍩</span>
+            Kategorien
+        </button>
+        
+        <button class="game-card" onclick="window.location.href='/Site/wp/wp.html'">
+            <span class="game-emoji">🏖️</span>
+            Wahrheit oder Pflicht
+        </button>
+        
+        <button class="game-card hidden-button" disabled>
+            <span class="game-emoji">🎵</span>
+            Soon
+        </button>
+        
+        <button class="game-card hidden-button" disabled>
+            <span class="game-emoji">🏖️</span>
+            Soon
+        </button>
+    </div>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6HS6ZC0PYQ');
+
+        // Add floating particles animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const particles = document.querySelectorAll('.particle');
+            
+            particles.forEach((particle, index) => {
+                // Random size and animation delay
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.left = Math.random() * 100 + '%';
+                
+                // Add floating animation duration variation
+                particle.style.animationDuration = (6 + Math.random() * 4) + 's';
+            });
+        });
+    </script>
+</body>
+</html>

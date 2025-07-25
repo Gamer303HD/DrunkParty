@@ -1,194 +1,222 @@
-//Game Nummer 1
-var a = 0;
-var b = 0;
+//Game Nummer 1 - Korrigierte Version
+var challengeUsageCount = {
+    water: 0,
+    mystery: 0
+};
 
-var names = localStorage.getItem("namesaver");
+var names = localStorage.getItem("playerNames");
 var namesave = JSON.parse(names);
 
 function load(){
-   
-   let playerkey = window.localStorage.getItem("playerCounterKey");
-   let spinio = document.getElementById("playertitle");
-   spinio.innerText = playerkey;
-   document.getElementById("playertitle").style.innerHTML = "was";
+    let playerkey = window.localStorage.getItem("playerCount");
+    let currentPlayerElement = document.getElementById("currentPlayer");
+    
+    if (currentPlayerElement && playerkey) {
+        currentPlayerElement.textContent = `${playerkey} Spieler bereit`;
+    }
+    
+    console.log("Geladene Spieler:", namesave);
 }
 
 function gamer1(){
-   console.log("press");
-    let spin = document.getElementById("player");
-    let players = window.localStorage.getItem("playerCounterKey");
-    console.log(players)
-    if(players > 1 || players > 99){
-        console.log("Selected Game 1"); 
+    console.log("Spiel gestartet");
+    let players = parseInt(window.localStorage.getItem("playerCount"));
+    
+    // Aktualisiere Spielerdaten
+    names = localStorage.getItem("playerNames");
+    namesave = JSON.parse(names);
+    
+    if (!namesave || namesave.length === 0) {
+        showChallenge("Keine Spieler gefunden! Bitte gehen Sie zurück und geben Sie Spielernamen ein.");
+        return;
+    }
+    
+    if (players >= 2 && players <= 99) {
+        console.log("Spiel wird gestartet mit", players, "Spielern"); 
         random_number(players);
-        
-    }else{
-
+    } else {
+        showChallenge("Ungültige Spieleranzahl. Bitte 2-99 Spieler auswählen.");
     }
 }
-async function  random_number(players) {
- 
-   console.log(namesave);
-    let numbers = document.getElementById("numbers");
-    let playerstitle = document.getElementById("playerstitle");
-    let spinner = document.getElementById("spin_button");
-    var spiner = document.getElementById("player");
 
-    numbers.style.scale = "2";
-    playerstitle.style.visibility = "Hidden";
-    spiner.style.visibility = "Hidden";
-    spinner.style.visibility = "Hidden";
+async function random_number(players) {
+    console.log("Verfügbare Spieler:", namesave);
     
-    var min = 1;
-    var max = players;
-    var colore = 0;
-    var min1 = 1;
-    spiner.style.borderColor = "transparent";
-    for(i = 0; i < 100; i++){
-        var rdmplayerrdm = Math.round(Math.random() * (max - min)) + min;
-        numbers.innerText = rdmplayerrdm;
-        if(colore == 1){
-           numbers.style.color = "#bc12dd";
-           spiner.style.color = "#bc12dd";
-           playerstitle.style.color = "#bc12dd";
-           spinner.style.color = "#bc12dd";
-           spinner.style.borderColor = "#bc12dd";
-        }else if(colore == 2){
-           numbers.style.color = "#dd124d";
-           spiner.style.color = "#dd124d";
-           playerstitle.style.color = "#dd124d";
-           spinner.style.color = "#dd124d";
-           spinner.style.borderColor = "#dd124d";
-        }else if(colore == 3){
-           numbers.style.color = "#12ddc3";
-           spiner.style.color = "#12ddc3";
-           playerstitle.style.color = "#12ddc3";
-           spinner.style.color = "#12ddc3";
-           spinner.style.borderColor = "#12ddc3";
-        }else if(colore == 4){
-           numbers.style.color = "#35dd12";
-           spiner.style.color = "#35dd12";
-           playerstitle.style.color = "#35dd12";
-           spinner.style.color = "#35dd12";
-           spinner.style.borderColor = "#35dd12";
-        }else if(colore == 5){
-           numbers.style.color = "#dddb12";
-           spiner.style.color = "#dddb12";
-           playerstitle.style.color = "#dddb12";
-           spinner.style.color = "#dddb12";
-           spinner.style.borderColor = "#dddb12";
-        }else if(colore == 6){
-           numbers.style.color = "#dd7f12";
-           spiner.style.color = "#dd7f12";
-           playerstitle.style.color = "#dd7f12";
-           spinner.style.color = "#dd7f12";
-           spinner.style.borderColor = "#dd7f12";
-           colore = 0;
+    let currentPlayerElement = document.getElementById("currentPlayer");
+    let spinningNumberElement = document.getElementById("spinningNumber");
+    let spinButton = document.getElementById("spinButton");
+    
+    if (!currentPlayerElement || !spinButton) {
+        console.error("UI Elemente nicht gefunden");
+        return;
+    }
+    
+    // Animation starten
+    currentPlayerElement.style.display = "none";
+    if (spinningNumberElement) {
+        spinningNumberElement.style.display = "block";
+    }
+    spinButton.disabled = true;
+    spinButton.textContent = "Wähle aus...";
+    
+    var selectedPlayerIndex;
+    var colorIndex = 0;
+    
+    // Farbwerte für Animation
+    const colors = [
+        "#bc12dd", // Lila
+        "#dd124d", // Rot
+        "#12ddc3", // Cyan
+        "#35dd12", // Grün
+        "#dddb12", // Gelb
+        "#dd7f12"  // Orange
+    ];
+    
+    // Spinning Animation - 100 Durchläufe
+    for(let i = 0; i < 100; i++){
+        selectedPlayerIndex = Math.floor(Math.random() * players);
+        
+        if (spinningNumberElement) {
+            spinningNumberElement.innerText = selectedPlayerIndex + 1;
+            spinningNumberElement.style.color = colors[colorIndex];
         }
-        colore = colore + 1;
-        let promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("done!"), 25)
-    });
-    let result = await promise;
+        
+        // Auch andere Elemente einfärben
+        if (currentPlayerElement) {
+            currentPlayerElement.style.color = colors[colorIndex];
+        }
+        if (spinButton) {
+            spinButton.style.borderColor = colors[colorIndex];
+        }
+        
+        colorIndex = (colorIndex + 1) % colors.length;
+        
+        // Warten für Animation
+        await new Promise(resolve => setTimeout(resolve, 25));
+    }
     
-   }
-var max1 = rdmplayerrdm;
-
-numbers.innerText = max1;
-var challangemin = 1;
-var challangemax = 16;
-var minshot = 1;
-var maxshot = 2;
-var minsip = 1;
-var maxsip = 2;
-var shotordrink = Math.round(Math.random() * (maxsip - minsip)) + minsip;
-var rdmchallange = Math.round(Math.random() * (challangemax - challangemin)) + challangemin;
-var player2rdm = Math.round(Math.random() * (max1 - min1)) + min1;
-
-
-
-
-if(maxsip == 1){
-   shotordrink = "Shot's"
-}else if(maxsip == 2){
-   shotordrink = "Schlücke"
+    // Animation beenden
+    if (spinningNumberElement) {
+        spinningNumberElement.style.display = "none";
+    }
+    currentPlayerElement.style.display = "flex";
+    
+    // Finaler ausgewählter Spieler
+    var selectedPlayer = namesave[selectedPlayerIndex];
+    currentPlayerElement.textContent = selectedPlayer;
+    
+    // Zweiten Spieler für Challenges auswählen (falls nötig)
+    var secondPlayerIndex;
+    do {
+        secondPlayerIndex = Math.floor(Math.random() * players);
+    } while (secondPlayerIndex === selectedPlayerIndex && players > 1);
+    
+    var secondPlayer = namesave[secondPlayerIndex];
+    
+    // Challenge generieren
+    generateChallenge(selectedPlayer, secondPlayer, players);
+    
+    // Button wieder aktivieren
+    spinButton.disabled = false;
+    spinButton.textContent = "🎲 Spieler wählen";
 }
 
-if(player2rdm === rdmplayerrdm){
-   var player2rdm = Math.round(Math.random() * (max1 - min1)) + min1;
-   console.log(player2rdm + " test")
+function generateChallenge(selectedPlayer, secondPlayer, totalPlayers) {
+    var challengeNumber = Math.floor(Math.random() * 16) + 1;
+    var drinkAmount = Math.floor(Math.random() * 3) + 1; // 1-3
+    var drinkType = Math.random() > 0.5 ? "Schlücke" : "Shots";
+    
+    if (drinkAmount === 1) {
+        drinkType = drinkType === "Schlücke" ? "Schluck" : "Shot";
+    }
+    
+    var challengeText = "";
+    
+    switch(challengeNumber) {
+        case 1:
+            challengeText = `Spieler ${selectedPlayer}: Verteile ${drinkAmount} ${drinkType}!`;
+            break;
+        case 2:
+            challengeText = `Spieler ${selectedPlayer}: Trinke einen Shot mit ${secondPlayer}!`;
+            break;
+        case 3:
+            challengeText = `Spieler ${selectedPlayer}: Mache Armdrücken gegen ${secondPlayer}! Der Verlierer trinkt ${drinkAmount} ${drinkType}!`;
+            break;
+        case 4:
+            challengeText = `Spieler ${selectedPlayer}: Mache einen Handstand! Schaffst du es nicht, trinkst du ${drinkAmount} ${drinkType}!`;
+            break;
+        case 5:
+            if (challengeUsageCount.water < 2) {
+                challengeText = `Spieler ${selectedPlayer}: Trinke ein Wasser - du brauchst es wahrscheinlich!`;
+                challengeUsageCount.water++;
+            } else {
+                challengeText = `Spieler ${selectedPlayer}: Du trinkst ${drinkAmount} ${drinkType}!`;
+            }
+            break;
+        case 6:
+            challengeText = `Spieler ${selectedPlayer}: Wenn dein Name mit einem Vokal endet, trinke zwei!`;
+            break;
+        case 7:
+            challengeText = `Spieler ${selectedPlayer}: Leere das Glas von ${secondPlayer}!`;
+            break;
+        case 8:
+            challengeText = `Spieler ${selectedPlayer}: Singe ein Lied oder trinke ${drinkAmount} ${drinkType}!`;
+            break;
+        case 9:
+            if (challengeUsageCount.mystery < 2) {
+                challengeText = `Spieler ${selectedPlayer}: Mystery Shot! Deine Mitspieler mischen dir einen Shot aus beliebigen Getränken!`;
+                challengeUsageCount.mystery++;
+            } else {
+                challengeText = `Spieler ${selectedPlayer}: Du trinkst ${drinkAmount} ${drinkType}!`;
+            }
+            break;
+        case 10:
+            challengeText = `Spieler ${selectedPlayer}: Du trinkst ${drinkAmount} ${drinkType}!`;
+            break;
+        case 11:
+            challengeText = `Spieler ${selectedPlayer}: Tausche dein Getränk mit der Person mit dem vollsten Glas!`;
+            break;
+        case 12:
+            challengeText = `Spieler ${selectedPlayer}: Verteile 2 ${drinkType}!`;
+            break;
+        case 13:
+            challengeText = `Spieler ${selectedPlayer}: Tausche dein Getränk mit ${secondPlayer}!`;
+            break;
+        case 14:
+            challengeText = `Spieler ${selectedPlayer}: Mische ${secondPlayer} einen starken Drink zusammen!`;
+            break;
+        case 15:
+            challengeText = `Spieler ${selectedPlayer}: Tausche deinen Namen mit ${secondPlayer}! Wer den Namen falsch sagt, trinkt!`;
+            break;
+        case 16:
+            challengeText = `Hat Spieler ${selectedPlayer} einen Freund oder eine Freundin? Dann trinke!`;
+            break;
+        default:
+            challengeText = `Spieler ${selectedPlayer}: Du trinkst ${drinkAmount} ${drinkType}!`;
+    }
+    
+    showChallenge(challengeText);
 }
 
-
-
-
-
-player2rdm = player2rdm - 1; 
-console.log(player2rdm);
-var player2 = namesave[player2rdm];
-
-rdmplayerrdm = rdmplayerrdm - 1;
-console.log(rdmplayerrdm);
-var rdmplayer = namesave[rdmplayerrdm];
-
-var shotsnumber = Math.round(Math.random() * (maxshot - minshot)) + minshot;
-if(shotsnumber == player2){
-   var shotsnumber = Math.round(Math.random() * (maxshot - minshot)) + minshot;
+function showChallenge(text) {
+    const modal = document.getElementById('challengeModal');
+    const challengeText = document.getElementById('challengeText');
+    
+    if (modal && challengeText) {
+        challengeText.textContent = text;
+        modal.style.display = 'flex';
+    } else {
+        // Fallback zu alert wenn Modal nicht existiert
+        alert(text);
+    }
 }
 
-if(shotsnumber == 1){
-   if(maxsip == 1){
-      shotordrink = "Shot"
-   }else if(maxsip == 2){
-      shotordrink = "Schluck"
-   }
+function closeModal() {
+    const modal = document.getElementById('challengeModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
 
-numbers.style.visibility = "Hidden";
-numbers.style.scale = "1";
-playerstitle.style.visibility = "Visible";
-spiner.style.visibility = "Visible";
- if(rdmchallange == 1){
-     alert("Spieler  " + rdmplayer + "  Verteile " + shotsnumber + " " + shotordrink);
- }else if(rdmchallange == 2){
-    alert("Spieler  " + rdmplayer + "  trinkst einen Shot mit dem Spieler  " + player2);
- }else if(rdmchallange == 3){
-    alert("Spieler  " + rdmplayer + "  Mache Armdrücken gegen Spieler  " + player2 + "der Verlierer Trinkt " + shotsnumber + " " + shotordrink);
- }else if(rdmchallange == 4){
-    alert("Spieler  " + rdmplayer + "  Mache einen Handstand. Wenn du es nicht schaffst, trinkst du " + shotsnumber + " " + shotordrink);
- }else if(rdmchallange == 5 && b < 2){
-    alert("Spieler  " + rdmplayer + "  Trink ein Wasser, du brauchst es wahrscheinlich");
-    b++;
- }else if(rdmchallange == 6){
-    alert("Spieler  " + rdmplayer + "  Wenn dein Name mit einem Vokal endet, trink zwei.");
- }else if(rdmchallange == 7){
-    alert("Spieler  " + rdmplayer + "  Leere das Glas von dem Spieler  " + player2);
- }else if(rdmchallange == 8){
-    alert("Spieler  " + rdmplayer + "  Sing ein Lied oder trink " + shotsnumber + " " + shotordrink);
- }else if(rdmchallange == 9 && a < 2){
-    alert("Spieler  " + rdmplayer + "  Mystery Shot, Deine Mitspieler mischen dir einen Shot aus beliebigen Getränken.");
-    a++;
- }else if(rdmchallange == 10){
-    alert("Spieler  " + rdmplayer + "  Du trinkst " + shotsnumber + " " + shotordrink);
- }else if(rdmchallange == 11){
-    alert("Spieler  " + rdmplayer + "  Tausche dein Getränk mit der Person mit dem vollsten Glas");
- }else if(rdmchallange == 12){
-    alert("Spieler  " + rdmplayer + "  verteile 2 " + shotordrink + "!");
- }else if(rdmchallange == 13){
-   alert("Spieler  " + rdmplayer + "  Tausche dein Getränk mit dem Speiler Nummer  " + player2);
- }else if(rdmchallange == 14){
-   alert("Spieler " + rdmplayer + " mische dem Spieler " + player2 + "Einen starken drink zusammen")
- }else if(rdmchallange == 15){
-   alert("Spieler " + rdmplayer + " tausche deinen Namen mit Spieler " + player2 +" wen der name falsch gesagt wird trink!")
- }else if(rdmplayer == 16){
-   alert("Hat der Spieler nummer " + rdmplayer + " einen Freund oder Freundin dan trink!")
- }
- spiner.innerHTML = rdmplayer;
- spinner.style.visibility = "Visible";  
- numbers.style.visibility = "Visible"; 
-}
-
-
-
-
-
+// Beim Laden der Seite initialisieren
+window.addEventListener('load', load);

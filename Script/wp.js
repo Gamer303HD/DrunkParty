@@ -1,89 +1,5 @@
-var list = 0;
-var Selectquestion = 1;
-var colorswitch = 0;
-var textmessage = document.getElementById("text");
-var numbers = document.getElementById("numbers");
-var maxcolor = 1;
-var mincolor = 5;
-var select = 1;
-var maxwahrheit = 1;
-var minwahrheit = 100;
-var maxpflicht = 1;
-var minpflicht = 100;
 
-
-function buttonpflicht(){
-    select = 2;
-    clickwindow();
-}
-function buttonwahrheit(){
-    select = 1;
-    clickwindow();
-}
-
-function triggerAnimation() {
-    var element = document.getElementById('text');
-    element.classList.remove('animate-slide-in');
-    void element.offsetWidth; // Trigger a reflow to reset the animation
-    element.classList.add('animate-slide-in');
-    // Define the keyframes and animation directly in JavaScript
-    const styleSheet = document.createElement('style');
-    styleSheet.type = 'text/css';
-    styleSheet.innerText = `
-        @keyframes slideInFromTop {
-            from {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        #text.animate-slide-in {
-            animation: slideInFromTop 0.5s forwards;
-        }
-    `;
-    document.head.appendChild(styleSheet);
-
-    // Add the class that triggers the animation
-    element.classList.add('animate-slide-in');
-}
-
-function clickwindow(){
-
-    if(select == 1){
-        var randomnumberwahrheit = Math.round(Math.random() * (maxwahrheit - minwahrheit)) + minwahrheit;
-        textmessage.innerHTML = wahrheit[randomnumberwahrheit];
-        colorswitch = colorswitch + 1;
-        triggerAnimation()
-    }else if(select == 2){
-        var randomnumberpflicht = Math.round(Math.random() * (maxpflicht - minpflicht)) + minpflicht;
-        textmessage.innerHTML = pflicht[randomnumberpflicht];
-        colorswitch = colorswitch + 1;
-        triggerAnimation()
-    }
-    
-    if(colorswitch == 5){
-        var colorsrandom = Math.round(Math.random() * (maxcolor - mincolor)) + mincolor;
-        if(colorsrandom == 1){
-            document.body.style.backgroundColor = "#7f12dd";
-        }else if(colorsrandom == 2){
-            document.body.style.backgroundColor = "#dd124d";
-        }else if(colorsrandom == 3){
-            document.body.style.backgroundColor = "#ddc012";
-        }else if(colorsrandom == 4){
-            document.body.style.backgroundColor = "#12dd5d";
-        }else if(colorsrandom == 5){
-            document.body.style.backgroundColor = "#1272dd";
-
-        }
-        colorswitch = 0;
-    }
-
-
-}
-
+// Questions and Tasks Arrays
 const wahrheit = [
     "Was ist das Peinlichste, was dir je passiert ist?",
     "Wie viele Jungen / Mädchen hast du schon geküsst?",
@@ -199,7 +115,7 @@ const pflicht = [
     "Benimm dich, wie ein Huhn.",
     "Riech am Fuß deines linken Nachbars.",
     "Sprich mit bayrischem/sächsischem/einem anderen Dialekt.",
-    "Beende jeden Satz mit „... nicht!“",
+    "Beende jeden Satz mit „... nicht!",
     "Stecke dir Eiswürfel in die Hose.",
     "Sprich, ohne deinen Mund zu schließen.",
     "Führe ein drei-minütiges Stand-Up-Comedy-Programm auf.",
@@ -301,106 +217,273 @@ const pflicht = [
     "Halte eine Rede über ein zufälliges Thema, das die Gruppe auswählt.",
     "Setze eine Sonnenbrille auf und trage sie für den Rest der Runde.",
     "Versuche, eine Minute lang zu jonglieren.",
-    "Verkleide dich mit Kleidungsstücken aus dem Raum, um ein neues Outfit zu kreieren.",
-    "Gib der Person links von dir eine Kopfmassage.",
-    "Mache eine Runde lang Tiergeräusche, ohne zu sprechen.",
-    "Stelle eine Szene aus deiner Lieblingsserie nach.",
-    "Versuche, ein Glas Wasser auf dem Kopf balancierend durch den Raum zu tragen.",
-    "Führe eine Luftgitarren-Show auf.",
-    "Lass jemanden aus der Gruppe einen Schnurrbart auf dein Gesicht malen.",
-    "Gib der Person rechts von dir eine Schultermassage.",
-    "Singe das Alphabet rückwärts.",
-    "Versuche, ein Gedicht über einen Gegenstand im Raum zu schreiben oder zu rezitieren.",
-    "Mache 20 Hampelmänner.",
-    "Ruf einen Freund oder Familienmitglied an und singe ihnen ein Lied vor.",
-    "Erzähle der Gruppe eine lustige Anekdote aus deiner Kindheit.",
-    "Mache eine Minute lang einen Moonwalk.",
-    "Ziehe ein Paar Socken an deinen Händen und versuche, eine Flasche Wasser zu öffnen.",
-    "Rede eine Minute lang mit einem Akzent.",
-    "Mache einen Handstand gegen die Wand.",
-    "Singe deinen Lieblingssong vor.",
-    "Versuche, dich selbst zu kitzeln.",
-    "Versuche, ein Glas Wasser zu trinken, während du auf den Händen stehst.",
-    "Mache eine Pirouette.",
-    "Mache ein Selfie und poste es auf Social Media.",
-    "Laufe eine Runde um das Haus/die Wohnung.",
-    "Versuche, einen Löffel auf der Nase zu balancieren.",
-    "Male einen Regenbogen auf ein Blatt Papier.",
-    "Zieh deine Socken mit einer Zange aus.",
-    "Stecke deine Zehen für eine Minute in deinen Mund.",
-    "Versuche, einen Apfel zu schälen, ohne das Messer abzusetzen.",
-    "Mache einen Handstand und trinke dabei ein Glas Wasser.",
-    "Zeichne mit verbundenen Augen ein Porträt einer anderen Person.",
-    "Versuche, mit den Füßen zu klatschen.",
-    "Iss einen Esslöffel Ketchup.",
-    "Imitiere eine berühmte Person deiner Wahl.",
-    "Versuche, eine Minute lang wie ein Huhn zu laufen.",
-    "Mache ein Musikvideo zu einem beliebigen Song.",
-    "Schreibe mit deinem Fuß eine Nachricht auf ein Blatt Papier.",
-    "Versuche, für eine Minute auf deinen Händen zu laufen.",
-    "Trage für 10 Minuten eine Augenbinde.",
-    "Mache für eine Minute lang einen Hampelmann.",
-    "Mache einen Handstand gegen eine Wand und halte ihn für 30 Sekunden.",
-    "Versuche, ohne den Boden zu berühren, von einem Ende des Raumes zum anderen zu kommen.",
-    "Mache eine Minute lang einen Bauchtanz.",
-    "Versuche, ein Stück Papier mit dem Mund aufzuheben.",
-    "Versuche, den Raum mit verbundenen Augen zu durchqueren.",
-    "Mache einen Rap über einen Gegenstand im Raum.",
-    "Mache einen Hampelmann, während du einen Becher Wasser hältst, ohne etwas zu verschütten.",
-    "Stelle eine Statue für eine Minute dar.",
-    "Führe eine Szene aus deinem Lieblingsfilm nach.",
-    "Male ein Bild von einer Katze auf ein Blatt Papier, ohne hinzuschauen.",
-    "Tausche ein Kleidungsstück mit der Person gegenüber von dir.",
-    "Versuche, ein Lied zu singen, während du gurgelst.",
-    "Baue einen Turm aus 5 oder mehr Gegenständen in dem Raum.",
-    "Versuche, einen Apfel nur mit den Zähnen zu schälen.",
-    "Mache eine Vorführung deines besten Tanzmoves.",
-    "Mache eine Minute lang Seilspringen.",
-    "Halte eine Eiswürfel in der Hand, bis er vollständig geschmolzen ist.",
-    "Laufe auf den Händen von einem Ende des Raumes zum anderen.",
-    "Mache eine Minute lang Liegestütze.",
-    "Versuche, mit einem Ball oder einem anderen Gegenstand zu jonglieren.",
-    "Singe ein Lied bis zum Ende.",
-    "Mache 10 Hampelmänner.",
-    "Versuche, den nächsten Song, der abgespielt wird, zu erraten.",
-    "Male ein Porträt von jemandem im Raum.",
-    "Mach eine Minute lang einen Kopfstand.",
-    "Erfinde eine neue Tanzbewegung und führe sie vor.",
-    "Mache 10 Kniebeugen.",
-    "Imitiere jemanden im Raum und die anderen müssen raten, wer es ist.",
-    "Tanze eine Minute lang ohne Musik.",
-    "Versuche, mit deinen Füßen zu klatschen.",
-    "Mache eine Minute lang einen Hampelmann.",
-    "Versuche, ein Stück Brot mit verbundenen Augen zu butteren.",
-    "Laufe rückwärts um das Haus/die Wohnung.",
-    "Mache einen Tierlaut deiner Wahl und die anderen müssen raten, welches Tier es ist.",
-    "Lass dich von der Person rechts von dir schminken.",
-    "Baue einen Turm aus allem, was du in der Küche finden kannst.",
-    "Mache einen Handstand und zähle bis zehn.",
-    "Versuche, ein Ei zu balancieren.",
-    "Tanze den Macarena.",
-    "Versuche, mit geschlossenen Augen eine Flasche Wasser zu trinken.",
-    "Rufe jemanden an und singe ihm ein Lied vor.",
-    "Lass jemanden ein „X“ auf deinem Gesicht malen.",
-    "Stehe auf einem Bein und hüpfe fünf Mal.",
-    "Mache ein Selfie und poste es auf Instagram.",
-    "Halte eine kurze Rede über einen Gegenstand im Raum.",
-    "Mache einen Stuhltanz.",
-    "Lass dich von der Person links von dir füttern.",
-    "Probiere, 30 Sekunden lang zu jonglieren.",
-    "Führe eine Yoga-Pose deiner Wahl aus.",
-    "Mache den Moonwalk.",
-    "Versuche, ohne deine Hände zu klatschen.",
-    "Schreibe ein kurzes Gedicht über etwas im Raum.",
-    "Mache eine Minute lang Seilspringen.",
-    "Versuche, mit geschlossenen Augen ein Glas Wasser zu trinken.",
-    "Imitiere einen Affen so gut wie möglich.",
-    "Lass jemanden ein Bild auf deinem Rücken malen und rate, was es ist.",
-    "Versuche, ein Stück Papier zu zerkleinern und in einen Becher zu werfen.",
-    "Zeige deinen besten Tanzmove.",
-    "Baue aus allem, was du im Raum findest, eine kleine Festung.",
-    "Versuche, eine Minute lang auf deinen Händen zu laufen."
+    "Verkleide dich mit Kleidungsstücken aus dem Raum, um ein neues Outfit zu kreieren."
 ];
 
 
+
+// Game State Variables
+let colorswitch = 0;
+let select = 1;
+let isDarkTheme = true;
+
+// DOM Elements
+const textElement = document.getElementById("text");
+const sidebar = document.getElementById("sidebar");
+
+// Game Configuration
+const maxcolor = 1;
+const mincolor = 5;
+const maxwahrheit = 1;
+const minwahrheit = wahrheit.length - 1;
+const maxpflicht = 1;
+const minpflicht = pflicht.length - 1;
+
+// Settings Functions
+function toggleSettings() {
+    sidebar.classList.toggle('open');
+}
+
+function toggleTheme() {
+    const toggleSwitch = document.querySelector('.toggle-switch');
+    const body = document.body;
+    
+    isDarkTheme = !isDarkTheme;
+    toggleSwitch.classList.toggle('active');
+    
+    if (isDarkTheme) {
+        body.style.background = 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 100%)';
+    } else {
+        body.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 25%, #667eea 50%, #764ba2 100%)';
+        document.documentElement.style.setProperty('--text-primary', '#2c3e50');
+        document.documentElement.style.setProperty('--text-secondary', 'rgba(44, 62, 80, 0.8)');
+    }
+}
+
+// Game Button Functions
+function buttonpflicht() {
+    select = 2;
+    clickwindow();
+    
+    // Add visual feedback
+    const dareBtn = document.querySelector('.dare-btn');
+    dareBtn.style.transform = 'translateY(-5px) scale(1.02)';
+    setTimeout(() => {
+        dareBtn.style.transform = '';
+    }, 200);
+}
+
+function buttonwahrheit() {
+    select = 1;
+    clickwindow();
+    
+    // Add visual feedback
+    const truthBtn = document.querySelector('.truth-btn');
+    truthBtn.style.transform = 'translateY(-5px) scale(1.02)';
+    setTimeout(() => {
+        truthBtn.style.transform = '';
+    }, 200);
+}
+
+// Animation Trigger Function
+function triggerAnimation() {
+    const element = document.getElementById('text');
+    
+    // Remove existing animation classes
+    element.classList.remove('animate-slide-in', 'show');
+    
+    // Force reflow
+    void element.offsetWidth;
+    
+    // Add animation classes
+    element.classList.add('animate-slide-in', 'show');
+    
+    // Add floating icons animation
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    floatingIcons.forEach((icon, index) => {
+        icon.style.animation = 'none';
+        setTimeout(() => {
+            icon.style.animation = `floatAround 8s ease-in-out infinite ${index * 2}s`;
+        }, 50);
+    });
+}
+
+// Main Game Logic
+function clickwindow() {
+    let questionText = "";
+    
+    if (select == 1) {
+        // Truth question
+        const randomnumberwahrheit = Math.floor(Math.random() * (maxwahrheit - minwahrheit + 1)) + minwahrheit;
+        questionText = wahrheit[randomnumberwahrheit];
+        
+        // Update floating icons for truth
+        updateFloatingIcons(['🤔', '❓', '💭']);
+    } else if (select == 2) {
+        // Dare task
+        const randomnumberpflicht = Math.floor(Math.random() * (maxpflicht - minpflicht + 1)) + minpflicht;
+        questionText = pflicht[randomnumberpflicht];
+        
+        // Update floating icons for dare
+        updateFloatingIcons(['⚡', '🎭', '🔥']);
+    }
+    
+    // Display the question/task
+    textElement.innerHTML = questionText;
+    
+    // Trigger animations
+    triggerAnimation();
+    
+    // Increment color switch counter
+    colorswitch++;
+    
+    // Change background color every 5 questions
+    if (colorswitch >= 5) {
+        changeBackgroundColor();
+        colorswitch = 0;
+    }
+}
+
+// Update floating icons
+function updateFloatingIcons(icons) {
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    floatingIcons.forEach((icon, index) => {
+        if (icons[index]) {
+            icon.textContent = icons[index];
+        }
+    });
+}
+
+// Background Color Change Function
+function changeBackgroundColor() {
+    const body = document.body;
+    const colorsrandom = Math.floor(Math.random() * (maxcolor - mincolor + 1)) + mincolor;
+    
+    // Remove existing background classes
+    body.classList.remove('bg-purple', 'bg-pink', 'bg-yellow', 'bg-green', 'bg-blue');
+    
+    // Add smooth transition
+    body.style.transition = 'background 1s ease-in-out';
+    
+    switch(colorsrandom) {
+        case 1:
+            body.classList.add('bg-purple');
+            break;
+        case 2:
+            body.classList.add('bg-pink');
+            break;
+        case 3:
+            body.classList.add('bg-yellow');
+            break;
+        case 4:
+            body.classList.add('bg-green');
+            break;
+        case 5:
+            body.classList.add('bg-blue');
+            break;
+    }
+    
+    // Add sparkle effect
+    createSparkleEffect();
+}
+
+// Sparkle Effect for Color Changes
+function createSparkleEffect() {
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: white;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1000;
+                left: ${Math.random() * window.innerWidth}px;
+                top: ${Math.random() * window.innerHeight}px;
+                animation: sparkle 1s ease-out forwards;
+            `;
+            
+            // Add sparkle animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes sparkle {
+                    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+                    50% { transform: scale(1) rotate(180deg); opacity: 1; }
+                    100% { transform: scale(0) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+                style.remove();
+            }, 1000);
+        }, i * 50);
+    }
+}
+
+// Initialize App
+document.addEventListener('DOMContentLoaded', function() {
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(e) {
+        if (sidebar.classList.contains('open') && 
+            !sidebar.contains(e.target) && 
+            !document.querySelector('.settings-icon').contains(e.target)) {
+            toggleSettings();
+        }
+    });
+    
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'w' || e.key === 'W') {
+            buttonwahrheit();
+        } else if (e.key === 'p' || e.key === 'P') {
+            buttonpflicht();
+        } else if (e.key === 'Escape') {
+            if (sidebar.classList.contains('open')) {
+                toggleSettings();
+            }
+        }
+    });
+    
+    // Add touch gestures for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    });
+    
+    document.addEventListener('touchend', function(e) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+        
+        // Swipe gestures
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+            if (deltaX > 0) {
+                buttonwahrheit(); // Swipe right for truth
+            } else {
+                buttonpflicht(); // Swipe left for dare
+            }
+        }
+    });
+    
+    // Initialize floating icons
+    updateFloatingIcons(['💭', '✨', '🎭']);
+    
+    // Add initial welcome message
+    setTimeout(() => {
+        if (!textElement.innerHTML) {
+            textElement.innerHTML = "Wähle 'Wahrheit' oder 'Pflicht' um zu beginnen! 🎉<br><small>Tipp: Nutze die Tasten W und P oder wische auf dem Handy!</small>";
+            textElement.classList.add('show');
+        }
+    }, 1000);
+});
 

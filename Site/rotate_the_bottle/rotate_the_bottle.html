@@ -1,39 +1,104 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="rotate_the_bottle.css">
-<script language="javascript" type="text/javascript" src="/Script/rotate_the_bottle.js" defer></script>
-<link rel="shortcut icon" href="Logs/logo.png">
-<html>
-    <title>DrunkParty.de</title>
-</html>
-<header>
-  <u onclick="window.location.href='/index.html'"; style="color: white; width: 20px;"><h1 id="maintitle" style="color: rgb(223, 70, 70);">Party Games</h1></u>
-  <img src="">
-  <div class="centered">
-    <img id="imgbottle" src="/logs/Pictures/bottle.png" style="width: 626px; height: 626px;">
-    <button id="spin_button" onclick="spinner(1)">Spin</button>
-    <button id="button_settings" onclick="spinner(2)">Auto</button>
-    <div class="settings">
-      <a id="txt1" style="color: white;">Delay Sek <input id="delaytime" type="number" max="999" placeholder="10" min="10"></a>
-      <a id="txt2" style="color: white;">Runden <input id="delayrounds" type="number" placeholder="2" max="999" min="2"></a>
-
-      <div class="custom-alert" id="customAlert" onclick="hideAlert()">
-      </div>
-
-    </div>
-  </div>
-  <head>
-    <body>
-     <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
-      <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6HS6ZC0PYQ');
-      </script>
-    </body>
-  </head>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin the Bottle - Party Games</title>
+    <link rel="stylesheet" href="rotate_the_bottle.css">
+    <link rel="shortcut icon" href="Logs/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HS6ZC0PYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6HS6ZC0PYQ');
+    </script>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
 
-</header>
+    <header>
+        <!-- Back to Home Link -->
+        <div class="back-link-container">
+            <a href="/index.html" class="back-link">
+                <div class="back-btn">
+                    <span class="back-icon">🏠</span>
+                    <span>Home</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Main Title -->
+        <h1 id="maintitle" class="main-title">🍾 Spin the Bottle</h1>
+        
+        <!-- Game Container -->
+        <div class="game-container">
+            <!-- Bottle Image Container -->
+            <div class="bottle-container">
+                <img id="imgbottle" src="/logs/Pictures/bottle.png" alt="Bottle" class="bottle-image">
+            </div>
+
+            <!-- Game Controls -->
+            <div class="controls-container">
+                <button id="spin_button" class="game-btn primary-btn" onclick="spinner(1)">
+                    <span class="btn-icon">🎯</span>
+                    <span>Spin</span>
+                </button>
+                
+                <button id="button_settings" class="game-btn auto-btn" onclick="spinner(2)">
+                    <span class="btn-icon">⚙️</span>
+                    <span>Auto Mode</span>
+                </button>
+            </div>
+
+            <!-- Settings Panel -->
+            <div class="settings-panel" id="settingsPanel">
+                <div class="settings-content">
+                    <h3 class="settings-title">Auto Mode Settings</h3>
+                    
+                    <div class="input-group">
+                        <label for="delaytime" class="input-label">
+                            <span class="label-icon">⏱️</span>
+                            Delay (Seconds)
+                        </label>
+                        <input id="delaytime" type="number" min="10" max="999" placeholder="10" class="settings-input">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="delayrounds" class="input-label">
+                            <span class="label-icon">🔄</span>
+                            Rounds
+                        </label>
+                        <input id="delayrounds" type="number" min="2" max="999" placeholder="2" class="settings-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Alert Modal -->
+        <div class="custom-alert" id="customAlert" onclick="hideAlert()">
+            <div class="alert-content">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-message"></div>
+                <div class="alert-close">Tap to close</div>
+            </div>
+        </div>
+    </header>
+
+    <script src="/Script/rotate_the_bottle.js" defer></script>
+</body>
+</html>
